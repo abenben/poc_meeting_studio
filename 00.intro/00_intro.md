@@ -1,4 +1,6 @@
-# Google Meetの録音・文字起こし・議事録作成機能を徹底解説
+# 0.Google Meetの録音・文字起こし・議事録作成機能について
+
+## Google Meetの録音・文字起こし・議事録作成機能を徹底解説
 
 Google Meetには、会議の生産性を向上させるための強力な「録音」「文字起こし」「議事録作成」機能が備わっています。これらの機能を活用することで、会議の内容を正確に記録し、参加できなかったメンバーへの情報共有や、後の振り返りを容易にします。
 
@@ -101,3 +103,4 @@ GoogleのAI「Gemini」を活用し、会議の文字起こしデータを元に
     [https://support.google.com/meet/answer/14754931?hl=ja](https://support.google.com/meet/answer/14754931?hl=ja)
 * **Google Workspace：ビジネス向け AI ツール**
     [https://workspace.google.com/intl/ja/solutions/ai/](https://workspace.google.com/intl/ja/solutions/ai/)
+
