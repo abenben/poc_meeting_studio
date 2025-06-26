@@ -1,0 +1,5 @@
+{
+  "name": "poc_meeting_studio",
+  "description": "An application that uses AI to automatically structure meeting transcripts into summaries, decisions, and action plans.",
+  "requestFramePermissions": []
+}
