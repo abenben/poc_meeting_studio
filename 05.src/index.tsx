@@ -27,7 +27,7 @@ const App: React.FC = () => {
       return;
     }
     // APIキーの存在チェック
-    if (!process.env.API_KEY) {
+    if (!import.meta.env.VITE_API_KEY) {
       setError("APIキーが設定されていません。");
       return;
     }
@@ -37,7 +37,7 @@ const App: React.FC = () => {
     setStructuredResult(null);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY! });
+      const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY! });
 
       const prompt = `以下の文字起こしテキストを解析し、指定されたJSON形式で出力してください。
 
