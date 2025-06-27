@@ -10,9 +10,9 @@ AI議事録ジェネレーター (AI Meeting Minutes Generator)
 
 ## 必要なもの
 
-*   [Node.js](https://nodejs.org/) (バージョン 18.x 以上を推奨)
-*   npm (Node.jsに同梱されています)
-*   [Google Gemini APIキー](https://ai.google.dev/pricing)
+- [Node.js](https://nodejs.org/) (バージョン 18.x 以上を推奨)
+- npm (Node.jsに同梱されています)
+- [Google Gemini APIキー](https://ai.google.dev/pricing)
 
 ## ローカル環境での実行手順
 
@@ -40,6 +40,7 @@ npm install
 プロジェクトのルートディレクトリ（`package.json`と同じ階層）に `.env` という名前の新しいファイルを作成します。このファイルに、あなたのGoogle Gemini APIキーを以下のように記述してください。
 
 **.env ファイル**
+
 ```
 VITE_API_KEY="ここにあなたのAPIキーを貼り付け"
 ```
@@ -61,4 +62,3 @@ npm run dev
 1.  **文字起こしの貼り付け:** 画面左側のテキストエリアに、Google Meetなどから書き起こした会議のテキストを貼り付けます。
 2.  **議事録の生成:** 「議事録を生成する」ボタンをクリックします。AIがテキストを解析し、結果が右側に表示されるまで少し待ちます。
 3.  **結果の確認とエクスポート:** 生成された「要約」「決定事項」「アクションプラン」を確認します。問題がなければ、「Markdownでエクスポート」ボタンをクリックすると、`議事録.md`という名前のファイルがダウンロードされます。
-

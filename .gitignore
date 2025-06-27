@@ -4,3 +4,6 @@
 /.DS_Store
 /.env
 /05.src/.env
+/05.src/dist/
+/05.src/node_modules/
+/05.src/package-lock.json

@@ -1,6 +1,6 @@
 :root {
   --primary-color: #4a90e2;
-  --primary-hover-color: #357ABD;
+  --primary-hover-color: #357abd;
   --background-color: #f4f7f9;
   --card-background-color: #ffffff;
   --text-color: #333333;
@@ -124,7 +124,8 @@ main {
   min-height: 500px;
 }
 
-.placeholder, .error-message {
+.placeholder,
+.error-message {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -134,11 +135,11 @@ main {
 }
 
 .error-message {
-    color: var(--error-color);
-    background-color: #fdf2f2;
-    border: 1px solid var(--error-color);
-    border-radius: var(--border-radius);
-    padding: 1rem;
+  color: var(--error-color);
+  background-color: #fdf2f2;
+  border: 1px solid var(--error-color);
+  border-radius: var(--border-radius);
+  padding: 1rem;
 }
 
 .loader {
@@ -155,8 +156,12 @@ main {
 }
 
 @keyframes spin {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 .results h3 {
@@ -166,7 +171,8 @@ main {
   color: var(--primary-color);
 }
 
-.results p, .results ul {
+.results p,
+.results ul {
   margin-bottom: 1rem;
 }
 
@@ -184,7 +190,8 @@ main {
   margin-top: 1rem;
 }
 
-.action-plan-table th, .action-plan-table td {
+.action-plan-table th,
+.action-plan-table td {
   padding: 0.8rem;
   text-align: left;
   border-bottom: 1px solid var(--border-color);
@@ -206,7 +213,6 @@ main {
 .output-actions .btn {
   align-self: unset;
 }
-
 
 /* Responsive Design */
 @media (max-width: 1024px) {

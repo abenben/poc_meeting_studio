@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
+import { GoogleGenAI, GenerateContentResponse } from '@google/genai';
 
 // 議事録の構造を定義
 interface ActionPlanItem {
@@ -17,18 +17,19 @@ interface StructuredMinutes {
 
 const App: React.FC = () => {
   const [transcript, setTranscript] = useState('');
-  const [structuredResult, setStructuredResult] = useState<StructuredMinutes | null>(null);
+  const [structuredResult, setStructuredResult] =
+    useState<StructuredMinutes | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleGenerate = async () => {
     if (!transcript.trim()) {
-      setError("文字起こしテキストを入力してください。");
+      setError('文字起こしテキストを入力してください。');
       return;
     }
     // APIキーの存在チェック
     if (!import.meta.env.VITE_API_KEY) {
-      setError("APIキーが設定されていません。");
+      setError('APIキーが設定されていません。');
       return;
     }
 
@@ -62,14 +63,16 @@ ${transcript}
   ]
 }`;
 
-      const response: GenerateContentResponse = await ai.models.generateContent({
-        model: 'gemini-2.5-flash-preview-04-17',
-        contents: prompt,
-        config: {
-          systemInstruction,
-          responseMimeType: 'application/json',
-        },
-      });
+      const response: GenerateContentResponse = await ai.models.generateContent(
+        {
+          model: 'gemini-2.5-flash-preview-04-17',
+          contents: prompt,
+          config: {
+            systemInstruction,
+            responseMimeType: 'application/json',
+          },
+        }
+      );
 
       let jsonStr = response.text.trim();
       const fenceRegex = /^```(\w*)?\s*\n?(.*?)\n?\s*```$/s;
@@ -80,10 +83,9 @@ ${transcript}
 
       const parsedData: StructuredMinutes = JSON.parse(jsonStr);
       setStructuredResult(parsedData);
-
-    } catch (e: any) {
+    } catch (e: unknown) {
       console.error(e);
-      setError("議事録の生成に失敗しました。時間をおいて再試行してください。");
+      setError('議事録の生成に失敗しました。時間をおいて再試行してください。');
     } finally {
       setIsLoading(false);
     }
@@ -100,7 +102,7 @@ ${transcript}
 
     parts.push('## 決定事項');
     if (data.decisions && data.decisions.length > 0) {
-      parts.push(...data.decisions.map(decision => `- ${decision}`));
+      parts.push(...data.decisions.map((decision) => `- ${decision}`));
     } else {
       parts.push('特になし');
     }
@@ -110,7 +112,11 @@ ${transcript}
     if (data.action_plan && data.action_plan.length > 0) {
       parts.push('| タスク | 担当者 | 期限 |');
       parts.push('|:---|:---|:---|');
-      parts.push(...data.action_plan.map(item => `| ${item.task} | ${item.assignee} | ${item.deadline} |`));
+      parts.push(
+        ...data.action_plan.map(
+          (item) => `| ${item.task} | ${item.assignee} | ${item.deadline} |`
+        )
+      );
     } else {
       parts.push('特になし');
     }
@@ -123,7 +129,9 @@ ${transcript}
     if (!structuredResult) return;
 
     const markdownContent = convertToMarkdown(structuredResult);
-    const blob = new Blob([markdownContent], { type: 'text/markdown;charset=utf-8;' });
+    const blob = new Blob([markdownContent], {
+      type: 'text/markdown;charset=utf-8;',
+    });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
@@ -133,7 +141,6 @@ ${transcript}
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   };
-
 
   const renderOutput = () => {
     if (isLoading) {
@@ -148,7 +155,7 @@ ${transcript}
           <div className="results" aria-live="polite">
             <h3>会議の要約</h3>
             <p>{structuredResult.summary}</p>
-            
+
             <h3>決定事項</h3>
             <ul>
               {structuredResult.decisions.map((decision, index) => (
@@ -157,7 +164,8 @@ ${transcript}
             </ul>
 
             <h3>アクションプラン</h3>
-            {structuredResult.action_plan && structuredResult.action_plan.length > 0 ? (
+            {structuredResult.action_plan &&
+            structuredResult.action_plan.length > 0 ? (
               <table className="action-plan-table">
                 <thead>
                   <tr>
@@ -188,7 +196,11 @@ ${transcript}
         </>
       );
     }
-    return <div className="placeholder">左のフォームに文字起こしを入力し、「議事録を生成する」ボタンを押してください。</div>;
+    return (
+      <div className="placeholder">
+        左のフォームに文字起こしを入力し、「議事録を生成する」ボタンを押してください。
+      </div>
+    );
   };
 
   return (
@@ -207,7 +219,11 @@ ${transcript}
               placeholder="ここにGoogle Meetなどから書き出したテキストを入力してください..."
               aria-label="会議の文字起こし入力"
             />
-            <button className="btn" onClick={handleGenerate} disabled={isLoading}>
+            <button
+              className="btn"
+              onClick={handleGenerate}
+              disabled={isLoading}
+            >
               {isLoading ? '生成中...' : '議事録を生成する'}
             </button>
           </div>
