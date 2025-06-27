@@ -208,10 +208,87 @@ main {
   border-top: 1px solid var(--border-color);
   display: flex;
   justify-content: flex-end;
+  gap: 1rem; /* ボタン間のスペース */
 }
 
 .output-actions .btn {
   align-self: unset;
+}
+
+/* Markdown Editor Styles */
+.markdown-editor {
+  min-height: 500px; /* プレビューと同じくらいの高さに */
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace; /* 等幅フォント */
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Markdown Preview Styles */
+.markdown-preview {
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  min-height: 500px;
+  overflow-y: auto; /* スクロール可能に */
+}
+
+.markdown-preview h1, .markdown-preview h2, .markdown-preview h3, .markdown-preview h4, .markdown-preview h5, .markdown-preview h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--primary-color);
+}
+
+.markdown-preview h1 { font-size: 2em; }
+.markdown-preview h2 { font-size: 1.5em; }
+.markdown-preview h3 { font-size: 1.2em; }
+
+.markdown-preview p {
+  margin-bottom: 1rem;
+}
+
+.markdown-preview ul, .markdown-preview ol {
+  margin-bottom: 1rem;
+  padding-left: 20px;
+}
+
+.markdown-preview li {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-preview table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.markdown-preview th, .markdown-preview td {
+  padding: 0.8rem;
+  text-align: left;
+  border: 1px solid var(--border-color);
+}
+
+.markdown-preview th {
+  background-color: #f8f9fa;
+  font-weight: 500;
+}
+
+.markdown-preview pre {
+  background-color: #f0f0f0;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.markdown-preview code {
+  font-family: 'Fira Code', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+  background-color: #e0e0e0;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+.markdown-preview pre code {
+  background-color: transparent;
+  padding: 0;
 }
 
 /* Responsive Design */
